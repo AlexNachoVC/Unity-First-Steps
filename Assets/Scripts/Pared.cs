@@ -65,7 +65,7 @@ public class Pared : MonoBehaviour
                 y += 0.5f;
             }
         }
-        Bala();
+        // Bala();
     }
 
     // Update is called once per frame

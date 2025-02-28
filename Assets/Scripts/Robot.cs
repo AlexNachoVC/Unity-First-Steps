@@ -10,23 +10,26 @@ public class Robot : MonoBehaviour
     int shot;
     GameObject rArm;
     GameObject lArm;
+
     void BalaDerecha()
     {
         GameObject bala = Instantiate(ModeloBala);
         bala.transform.localScale = new Vector3(0.2f, 0.25f, 0.2f);
-        bala.transform.position = rArm.transform.position;
+        bala.transform.position = rArm.transform.position + new Vector3(0, 0, 0.8f);
         Rigidbody balaRB = bala.AddComponent<Rigidbody>();
         float thrust = 100.0f;
         balaRB.AddForce(0, 0, thrust, ForceMode.Impulse);
+        Destroy(bala, 3);
     }
     void BalaIzquierda()
     {
         GameObject bala = Instantiate(ModeloBala);
         bala.transform.localScale = new Vector3(0.2f, 0.25f, 0.2f);
-        bala.transform.position = lArm.transform.position;
+        bala.transform.position = lArm.transform.position + new Vector3(0, 0 , 0.8f);
         Rigidbody balaRB = bala.AddComponent<Rigidbody>();
         float thrust = 100.0f;
         balaRB.AddForce(0, 0, thrust, ForceMode.Impulse);
+        Destroy(bala, 3);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -93,7 +96,18 @@ public class Robot : MonoBehaviour
             p.z -= 0.01f;
             drone.transform.position = p;
         }
-
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.S))
+        {
+            Vector3 p = drone.transform.position;
+            p.y -= 0.01f;
+            drone.transform.position = p;
+        }
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
+        {
+            Vector3 p = drone.transform.position;
+            p.y += 0.01f;
+            drone.transform.position = p;
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (shot % 2 == 0)
@@ -106,8 +120,6 @@ public class Robot : MonoBehaviour
                 BalaIzquierda();
                 shot++;
             }
-            Destroy(BalaDerecha, 3);
-
         }
 
     }

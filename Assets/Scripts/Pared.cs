@@ -71,6 +71,10 @@ public class Pared : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // donde comenzar, donde terminar, color
+        Debug.DrawLine(Vector3.zero, new Vector3(10, 0, 0), Color.red);
+        Debug.DrawLine(Vector3.zero, new Vector3(0, 10, 0), Color.green);
+        Debug.DrawLine(Vector3.zero, new Vector3(0, 0, 10), Color.blue);
+        // Solamente se ven en el tab de "Scene" no en el de "Game"
     }
 }

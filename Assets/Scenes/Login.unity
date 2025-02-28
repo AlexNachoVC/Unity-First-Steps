@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 154056076}
   - component: {fileID: 154056075}
   m_Layer: 5
-  m_Name: InputField (TMP)
+  m_Name: InputField (Lista)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -505,6 +505,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96072fd676a36c945bc7b341b8566b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grupo: {fileID: 2073456196}
+  lista: {fileID: 154056075}
 --- !u!4 &258124815
 Transform:
   m_ObjectHideFlags: 0
@@ -2014,7 +2016,7 @@ GameObject:
   - component: {fileID: 2073456197}
   - component: {fileID: 2073456196}
   m_Layer: 5
-  m_Name: InputField (TMP)
+  m_Name: InputField (Grupo)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

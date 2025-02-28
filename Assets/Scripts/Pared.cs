@@ -24,16 +24,6 @@ public class Pared : MonoBehaviour
         tabRB.mass = 0.1f;
     }
 
-    void Bala()
-    {
-        GameObject bala = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-        bala.transform.localScale = new Vector3(1f, 0.5f, 1f);
-        bala.transform.position = new Vector3(5f, 1f, -5.0f);
-        Rigidbody balaRB = bala.AddComponent<Rigidbody>();
-        float thrust = 10.0f;
-        balaRB.AddForce(0, 0, thrust, ForceMode.Impulse);
-    }
-
     void Start()
     {
         Suelo();

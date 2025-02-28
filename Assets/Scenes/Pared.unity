@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064d07a3ee2fc044bb84a9916325a77b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ModeloBala: {fileID: 8265796271237319021, guid: fd24c9f3207575a4bbbba1ebae6b9caa, type: 3}
   smoothTime: 0
 --- !u!4 &1033579743
 Transform:

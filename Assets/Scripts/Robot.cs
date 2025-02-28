@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Robot : MonoBehaviour
 {
+    [SerializeField]
+    GameObject ModeloBala;
     GameObject drone;
     public float smoothTime;
     private Vector3 velocity;
@@ -10,7 +12,7 @@ public class Robot : MonoBehaviour
     GameObject lArm;
     void BalaDerecha()
     {
-        GameObject bala = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+        GameObject bala = Instantiate(ModeloBala);
         bala.transform.localScale = new Vector3(0.2f, 0.25f, 0.2f);
         bala.transform.position = rArm.transform.position;
         Rigidbody balaRB = bala.AddComponent<Rigidbody>();
@@ -19,7 +21,7 @@ public class Robot : MonoBehaviour
     }
     void BalaIzquierda()
     {
-        GameObject bala = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+        GameObject bala = Instantiate(ModeloBala);
         bala.transform.localScale = new Vector3(0.2f, 0.25f, 0.2f);
         bala.transform.position = lArm.transform.position;
         Rigidbody balaRB = bala.AddComponent<Rigidbody>();
@@ -104,6 +106,8 @@ public class Robot : MonoBehaviour
                 BalaIzquierda();
                 shot++;
             }
+            Destroy(BalaDerecha, 3);
+
         }
 
     }

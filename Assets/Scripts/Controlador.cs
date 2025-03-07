@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Linq;
+using System.Collections;
+using UnityEngine.Networking;
 
 public class Controlador : MonoBehaviour
 {
@@ -18,6 +20,26 @@ public class Controlador : MonoBehaviour
     void Update()
     {
         
+    }
+
+    IEnumerator AskForLogin()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("datos", "ToDo: Poner datos de usuario como JSON aqui");
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://127.0.0.1:8001/clase", form))
+        {
+            yield return www.SendWebRequest();
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                string txt = www.downloadHandler.text;
+                Debug.Log(txt);
+            }
+        }
     }
 
     public void VamosAJugar()

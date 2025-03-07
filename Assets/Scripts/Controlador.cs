@@ -25,9 +25,14 @@ public class Controlador : MonoBehaviour
     IEnumerator AskForLogin()
     {
         WWWForm form = new WWWForm();
-        form.AddField("datos", "ToDo: Poner datos de usuario como JSON aqui");
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://127.0.0.1:8001/clase", form))
+        Usuario u = new Usuario();
+        u.listNumber = int.Parse(lista.text);
+        u.group = grupo.text;
+
+        form.AddField("datos", JsonUtility.ToJson(u));
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://127.0.0.1:8001/login", form))
         {
             yield return www.SendWebRequest();
             if (www.result != UnityWebRequest.Result.Success)
@@ -37,6 +42,7 @@ public class Controlador : MonoBehaviour
             else
             {
                 string txt = www.downloadHandler.text;
+                SceneManager.LoadScene("Logic");
                 Debug.Log(txt);
             }
         }
@@ -48,7 +54,7 @@ public class Controlador : MonoBehaviour
         {
             if (lista.text.All(char.IsNumber) && lista.text.Length > 0)
             {
-                SceneManager.LoadScene("Logic");
+                StartCoroutine(AskForLogin());
             }
             else Debug.Log("No pasa por el número de lista");
         }

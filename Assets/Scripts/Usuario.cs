@@ -1,9 +1,7 @@
-using UnityEngine;
-
 [System.Serializable]
-
 public class Usuario
 {
-    public int listNumber;
-    public string group;
+    public string n_lista;
+    public string grupo;
+    public string pin;
 }
